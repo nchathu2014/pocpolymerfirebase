@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html"/>
+<link rel="import" href="../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html"/>
+
+<dom-module id="comment-list-item">
+  <template>
+      <!-- calls component styles as external-->
+      <link rel="stylesheet" href="comment-list-item.css"/>
+
+      <div class="item-container">
+          <div class="img-area">
+              <img src="{{img}}"/>
+              <div style="color: white;font-size: 12px;text-align: center;">{{name}}</div>
+          </div>
+          <div class="other-area">
+              <ul>
+              <!--    <li class="name-style">{{name}}</li>-->
+                  <li>
+                      <iron-autogrow-textarea bind-value="{{comment}}" class="textarea-style"></iron-autogrow-textarea>
+                  </li>
+                  <li class="datetime">{{date_time}}</li>
+                  <li>
+                      <div style="float: right;">
+                          <button class="delete-btn" on-click="doDelete">DELETE</button>&nbsp;&nbsp;<button class="edit-btn" on-click="doEdit">UPDATE</button>&nbsp;&nbsp;
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div>&nbsp;</div>
+
+      <!-- toast message update -->
+      <paper-toast id="toolTip"
+                   duration="3000"
+                   text="Your Comment has Updated Successfully" class="toast-msg">
+      </paper-toast>
+
+
+
+      <!-- toast message add comment error -->
+      <paper-toast id="toolTipAddFaild"
+                   duration="4000"
+                   text="Comment Failed" class="toast-msg">
+      </paper-toast>
+
+      <!-- toast message delete comment error -->
+      <paper-toast id="toolTipDelete"
+                   duration="1500"
+                   text="Comment Deleted" class="toast-msg">
+      </paper-toast>
+
+  </template>
+</dom-module>
+
+<!-- calls component script as external-->
+<script src="comment-list-item.js"></script>

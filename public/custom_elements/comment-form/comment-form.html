@@ -1,0 +1,76 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html"/>
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html"/>
+<link rel="import" href="../../bower_components/google-youtube/google-youtube.html"/>
+<script src="../../bower_components/firebase/firebase.js"></script>
+
+<dom-module id="comment-form">
+    <template>
+        <!-- calls component styles as external-->
+        <link rel="stylesheet" href="comment-form.css"/>
+
+        <div class="main-container">
+            <!-- not recommended to use tables (here it is only for demo purposes)-->
+            <table>
+                <tr>
+                    <td>
+                        <google-youtube
+                                video-id="1uFY60CESlM"
+                                height="270px"
+                                width="480px"
+                                rel="0"
+                                start="5"
+                                autoplay="0">
+                        </google-youtube>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="question-heading"><h2>What is MEAN Stack ?</h2></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="name" value="{{name}}" placeholder="Your Nick"/>
+                                            </td>
+                                            <td><input type="hidden" id="date" disabled value="{{getDate()}}"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea rows="5" cols="100" name="title" id="comment" value="{{comment}}" placeholder="Your Comment...."></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="button" value="SUBMIT" class="submitBtn" on-click="sumbitComment"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+        <div>&nbsp;</div>
+        <!-- toast message-->
+        <paper-toast id="errTip"
+                     duration="3000"
+                     text="Required : Name and Comment" class="toast-msg">
+        </paper-toast>
+        <!-- toast message add comment -->
+        <paper-toast id="toolTipAdd"
+                     duration="2000"
+                     text="Comment Added" class="toast-msg">
+        </paper-toast>
+    </template>
+
+</dom-module>
+
+<!-- calls component script as external-->
+<script src="comment-form.js"></script>

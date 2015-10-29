@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html"/>
+<link rel="import" href="../comment-list-item/comment-list-item.html"/>
+<link rel="import" href="../comment-form/comment-form.html"/>
+
+<dom-module id="comment-list">
+
+        <template is="dom-bind">
+            <!-- refer comment-form component -->
+            <comment-form></comment-form>
+
+            <firebase-collection
+                    location="https://pocfirepoly.firebaseio.com/comment-list"
+                    order-by-child="__firebaseKey__"
+                    data="{{comment}}">
+            </firebase-collection>
+
+            <!-- refer comment-list-item component -->
+            <template is="dom-repeat" items="{{comment}}" as="comment">
+                <comment-list-item name="{{comment.name}}"
+                              img="{{comment.img}}"
+                              comment="{{comment.comment}}"
+                              date_time="{{comment.datetime}}"
+                              key="{{comment.__firebaseKey__}}"></comment-list-item>
+            </template>
+
+        </template>
+</dom-module>
+
+<script>
+    (function(){
+        'use strict'
+        Polymer({
+            is:"comment-list"
+        });
+    }());
+</script>
